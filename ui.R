@@ -7,6 +7,7 @@ library(RColorBrewer)
 library(scales)
 library(lattice)
 library(DT)
+library(googleCharts)
 
 #analyticsData<-read.csv("LifeExpectancyData.csv")
 
@@ -62,8 +63,13 @@ navbarPage("Life expectancy", id="nav",
                         )
                     ), 
            
+           #############################
+           # tab Life.expectancy ~ GDP #
+           #############################
            tabPanel(textOutput('plottitle'),
-                    plotOutput("hist1")),
+                    plotOutput("hist1"),
+                    sliderInput('slider1','choose the year you want to check',
+                                2000, 2015, 2003)),
            ###########################
            
             # tab 'DataSearch'

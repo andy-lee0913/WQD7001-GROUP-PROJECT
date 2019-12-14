@@ -112,15 +112,16 @@ output$data <- renderTable({
 }, rownames = TRUE)
 ############################
   
-  
-############################ liyuanze 
+#############################
+# tab Life.expectancy ~ GDP #
+#############################
 output$plottitle <- renderPrint({
-  cat("Life.expectancy ~ GDP",target_year())
+  cat("Life.expectancy ~ GDP in ",input$slider1)
 })
 
 output$hist1 <- renderPlot({
-  life2015 <- filter(dataAnalytics, Year == target_year())
-  plottitle <- paste("Life.expectancy ~ GDP",target_year())
+  life2015 <- filter(dataAnalytics, Year == input$slider1)
+  plottitle <- paste("Life.expectancy ~ GDP in", input$slider1)
   ggplot(life2015, aes(GDP, Life.expectancy)) + 
     geom_point(aes(color = Status)) +
     geom_smooth() +
