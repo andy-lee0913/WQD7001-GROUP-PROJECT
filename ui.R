@@ -53,7 +53,86 @@ navbarPage("Life expectancy", id="nav",
                     ), 
            
            tabPanel(textOutput('plottitle'),
-                    plotOutput("hist1"))
+                    plotOutput("hist1")),
            
+           ###########################
+           # tab 'Health Expenditure #
+           ###########################
+           tabPanel(title = "Health Expenditure",
+                    googleChartsInit(),
+                    
+                    # use google webfront source sans pro
+                    tags$link(
+                      href=paste0("http://fonts.googleapis.com/css?",
+                                  "family=Source+Sans+Pro:300,600,300italic"),
+                      rel="stylesheet", type="text/css"),
+                    
+                    tags$style(type="text/css",
+                               "body {font-family: 'Source Sans Pro'}"
+                    ),
+                    
+                    googleBubbleChart("chart",
+                                      width = "100%", height = "500px",
+                                      options = list(
+                                        fontName = "sans-serif",
+                                        fontSize = 13, 
+                                        # axis labels and ranges
+                                        hAxis = list(
+                                          title = "Health expenditure (%)",
+                                          viewWindow = xlim
+                                        ),
+                                        vAxis = list(
+                                          title = "Life expectancy (years)",
+                                          viewWindow = ylim
+                                        ),
+                                        chartArea = list(
+                                          top = 50, left = 75,
+                                          height = "75%", width = "75%"
+                                        ),
+                                        # to allow zoom in/out
+                                        explorer = list(),
+                                        bubble = list(
+                                          opacity = 0.30,
+                                          stroke = "none",
+                                          textStyle = list(
+                                            fontSize = 8
+                                          )
+                                        ),
+                                        
+                                        #set fonts
+                                        titleTextStyle = list(
+                                          fontSize =16
+                                        ),
+                                        tooltip = list(
+                                          textStyle = list(
+                                            fontSize = 12
+                                          )
+                                        ),
+                                        colorAxis = list(
+                                          colors = list(
+                                            'yellow', 'red', 'blue', 'green', 'orange', 'pink', 'grey', 'purple', 'magenta', 'cyan', 'beige', 'lavender', 'gold'
+                                          )
+                                        ),
+                                        sizeAxis = list(
+                                          minSize = 5, 
+                                          maxSize = 20,
+                                          minValue = min(dataAnalytics$Population),
+                                          maxValue = max(dataAnalytics$Population)
+                                        ),
+                                        animation = list(
+                                          'duration'=1000,
+                                          'easing' = 'inAndOut'
+                                        )
+                                      )
+                    ),
+                    fluidRow(
+                      shiny::column(10,
+                                    sliderInput("year", "Select the year",
+                                                min = min(dataAnalytics$Year), max = max(dataAnalytics$Year),
+                                                value = min(dataAnalytics$Year), step = 1, animate = TRUE)
+                      )
+                      
+                    )
+           )
           
 )
