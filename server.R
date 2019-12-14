@@ -135,4 +135,40 @@ output$table <- DT::renderDataTable({
 })
 ############################
 
+############################
+#  tab 'Health Expenditure'#
+############################
+defaultColors <- c("#3366cc", "#dc3912", "#ff9900", "#109618", "#990099", "#0099c6", "#dd4477")
+series <- structure(
+  lapply(defaultColors, function(color) { list(color=color) }),
+  names = levels(dataAnalytics$Status)
+)
+
+yearData <- reactive({
+  # Filter to the desired year, and put the columns
+  # in the order that Google's Bubble Chart expects
+  # them (name, x, y, color, size). Also sort by region
+  # so that Google Charts orders and colors the regions
+  # consistently.
+  df_expenditure <- dataAnalytics %>%
+    filter(Year == input$year) %>%
+    select(Country, Total.expenditure, Life.expectancy, Status,Population)
+  
+})
+
+output$chart <- reactive({
+  # Return the data and options
+  list(
+    data = googleDataTable(yearData()),
+    options = list(
+      title = sprintf(
+        "Life Expectancy against Health Expenditure by Country, %s",
+        input$year),
+      series = series
+    )
+  )
+})
+########################################
+
+
 }
