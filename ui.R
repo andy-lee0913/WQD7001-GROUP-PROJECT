@@ -53,7 +53,7 @@ navbarPage("Life expectancy", id="nav",
                                       draggable = FALSE, top = 55, left = "auto", right = 10, bottom = "auto",
                                       width = 400, height = "100%",
                                       
-                                      h2("Life expectancy in different countries"),
+                                      h2("worldwide data related to Life expectancy"),
                                       selectInput("typeofyear", "Select years", years),
                                       
                                       selectInput("typeofvariable", "Select variables", vars),
