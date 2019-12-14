@@ -54,7 +54,9 @@ navbarPage("Life expectancy", id="nav",
            
            tabPanel(textOutput('plottitle'),
                     plotOutput("hist1")),
-           ############
+           ###########################
+           
+            # tab 'DataSearch'
             tabPanel("DataSearch",DTOutput(outputId = "table")),
            
            ###########################
