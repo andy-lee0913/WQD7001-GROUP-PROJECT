@@ -84,7 +84,7 @@ function(input, output, session) {
   
   
   
-  ## Interactive Map ###########################################
+  ## Interactive Map  liuhongyang###########################################
   
   # Create the map
  
@@ -110,7 +110,10 @@ output$data <- renderTable({
   head((dftable()[, c("Country", input$typeofvariable), drop = FALSE]) ,10)
   
 }, rownames = TRUE)
-
+############################
+  
+  
+############################ liyuanze 
 output$plottitle <- renderPrint({
   cat("Life.expectancy ~ GDP",target_year())
 })
@@ -124,10 +127,12 @@ output$hist1 <- renderPlot({
     theme_economist() +
     labs(title = plottitle)
 })
+############################
 
+############################ liuhongyang
 output$table <- DT::renderDataTable({
   DT::datatable(dataAnalytics)
 })
-
+############################
 
 }
