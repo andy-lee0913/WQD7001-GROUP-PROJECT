@@ -8,6 +8,10 @@ library(scales)
 library(lattice)
 library(DT)
 library(googleCharts)
+library(ggplot2)
+library(ggthemes)
+library(plotly)
+library(hrbrthemes)
 
 analyticsData<-read.csv("LifeExpectancyData.csv")
 
