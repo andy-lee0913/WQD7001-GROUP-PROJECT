@@ -29,6 +29,9 @@ cat(paste(head(Df1)))
 
 #Read csv file
 dataAnalytics<-read.csv("LifeExpectancyData.csv",na.strings = NA,fill = NA)
+dataAnalytics<-impute(dataAnalytics)
+colSums(is.na(dataAnalytics))
+
 arrange(Df1,Country)
 
 
