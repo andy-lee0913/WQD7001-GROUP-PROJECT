@@ -8,14 +8,11 @@ library(scales)
 library(lattice)
 library(DT)
 library(googleCharts)
-<<<<<<< HEAD
 library(ggplot2)
 library(ggthemes)
 library(plotly)
 library(hrbrthemes)
-=======
-library(plotly)
->>>>>>> add new tabs
+
 
 analyticsData<-read.csv("LifeExpectancyData.csv")
 
