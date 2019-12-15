@@ -189,6 +189,16 @@ navbarPage("Life expectancy", id="nav",
                         plotlyOutput("plot1"),),
                         position = c("left", "right")
                         )
-           )
+           ),
+           
+           #############################
+           # liuhongyang Documentation#
+           #############################
+           
+           tabPanel("Overview",fluidRow(
+            
+                    includeMarkdown("documentation.md")
+             
+           ))
           
 )
