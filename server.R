@@ -230,6 +230,22 @@ output$chart <- reactive({
   )
 })
 ########################################
-
+# life expectancy changes with time
+########################################
+output$plot1 <- renderPlotly({
+  # Usual area chart
+  p <- data %>%
+    select(Country, Year, Life.expectancy ) %>%
+    filter(Country == input$typeOfCountry) %>%
+    ggplot( aes(x= Year, y=Life.expectancy)) +
+    geom_area(fill="#69b3a2", alpha=0.5) +
+    geom_line(color="#69b3a2") +
+    ylab("life expectancy")+ 
+    ggtitle("Life expectancy changes with time") 
+  theme_ipsum()
+  print(
+    ggplotly(p))
+  
+})
 
 }
