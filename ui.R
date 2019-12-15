@@ -20,6 +20,8 @@ analyticsData<-read.csv("LifeExpectancyData.csv")
 vars <- names(dataAnalytics)
 vars <-vars[-1:-3]
 
+
+
 years<-c("2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012", "2013","2014","2015")
 
 xlim <- list(
@@ -34,15 +36,7 @@ ylim <- list(
 
 # Define UI for application that draws a histogram
 navbarPage("Life expectancy", id="nav",
-           #############################
-           # liuhongyang Documentation#
-           #############################
-           
-           tabPanel("Overview",fluidRow(
-            
-                    includeMarkdown("documentation.md")
-             
-           )),
+          
            
             #############################
             # liuhongyang Interactive Map#
@@ -70,7 +64,7 @@ navbarPage("Life expectancy", id="nav",
                                       draggable = FALSE, top = 55, left = "auto", right = 10, bottom = "auto",
                                       width = 400, height = "100%",
                                       
-                                      h2("worldwide data related to Life expectancy"),
+                                      h2("Worldwide Health Data"),
                                       selectInput("typeofyear", "Select years", years),
                                       
                                       selectInput("typeofvariable", "Select variables", vars),
@@ -84,20 +78,20 @@ navbarPage("Life expectancy", id="nav",
            # tab GDP disease mortality #
            #############################
            tabPanel("Lifespan ~ GDP",
-                    sliderInput('slider1','choose the year you want to check',
+                    sliderInput('slider1',h3('Select the year'),
                                            2000, 2015, 2003),
-                        plotOutput("hist1")
+                    plotOutput("hist1")
                       ),
 
           tabPanel("Lifespan ~ mortality",
-                   sliderInput('slider2','choose the year you want to check',
+                   sliderInput('slider2',h3('Select the year'),
                                2000, 2015, 2003),
                    plotOutput("hist2"),
                    plotOutput("hist3")
                    ),
           
           tabPanel("Lifespan ~ diseases",
-                   sliderInput('slider3','choose the year you want to check',
+                   sliderInput('slider3',h3('Select the year'),
                                2000, 2015, 2003),
                    plotOutput("hist4"),
                    plotOutput("hist5"),
@@ -106,8 +100,7 @@ navbarPage("Life expectancy", id="nav",
                    ),
            ###########################
            
-            # tab 'DataSearch'
-            tabPanel("DataSearch",DTOutput(outputId = "table")),
+            
            
            ###########################
            # tab 'Health Expenditure #
@@ -179,29 +172,40 @@ navbarPage("Life expectancy", id="nav",
                                         )
                                       )
                     ),
-                    fluidRow(
-                      shiny::column(10,
-                                    sliderInput("year", "Select the year",
-                                                min = min(dataAnalytics$Year), max = max(dataAnalytics$Year),
-                                                value = min(dataAnalytics$Year), step = 1, animate = TRUE)
-                      )
-                      
-                    )
+                    sliderInput("year", h3("Select the year"),
+                                min = min(dataAnalytics$Year), max = max(dataAnalytics$Year)-1,
+                                value = min(dataAnalytics$Year), step = 1, animate = TRUE)
+                    
+                                  
+                    
            ),
            #############################
            # tab Life.expectancy ~ Year #
            #############################
-           tabPanel(  title = "Life expectancy changes with time",
+           tabPanel(  title = "Change in Life Expectancy",
                       
                       sidebarLayout(
                         sidebarPanel(
-                        selectInput("typeOfCountry", h4("Select countries"), choices = levels(analyticsData$Country),selected=levels(analyticsData$Country)[35]),
+                        selectInput("typeOfCountry", h4("Select country"), choices = levels(analyticsData$Country),selected=levels(analyticsData$Country)[35]),
                         ),
                         mainPanel(
                         plotlyOutput("plot1"),),
                         position = c("left", "right")
                         )
-           )
+           ),
+          
+          # tab 'DataSearch'
+          tabPanel("DataSearch",DTOutput(outputId = "table")),
+          
+          #############################
+          # liuhongyang Documentation#
+          #############################
+          
+          tabPanel("Overview",fluidRow(
+            
+            includeMarkdown("documentation.md")
+            
+          ))
            
          
           
