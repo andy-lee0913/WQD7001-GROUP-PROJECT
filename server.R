@@ -115,11 +115,11 @@ output$data <- renderTable({
 ############################
   
 #############################
-# tab GDP #
+# tab GDP disease mortality#
 #############################
-output$plottitle <- renderPrint({
-  cat("Lifespan ~ GDP,mortality,diseases in ",input$slider1)
-})
+# output$plottitle <- renderPrint({
+#   cat("Lifespan ~ GDP,mortality,diseases in ",input$slider1)
+# })
 
 output$hist1 <- renderPlot({
   life2015 <- filter(dataAnalytics, Year == input$slider1)
@@ -132,8 +132,8 @@ output$hist1 <- renderPlot({
 })
 
 output$hist2 <- renderPlot({
-  life2015 <- filter(dataAnalytics, Year == input$slider1)
-  plottitle <- paste("Life.expectancy ~ infant deaths in", input$slider1)
+  life2015 <- filter(dataAnalytics, Year == input$slider2)
+  plottitle <- paste("Life.expectancy ~ infant deaths in", input$slider2)
   ggplot(life2015, aes(infant.deaths, Life.expectancy)) + 
     geom_point(aes(color = Status)) +
     geom_smooth() +
@@ -142,8 +142,8 @@ output$hist2 <- renderPlot({
 })
 
 output$hist3 <- renderPlot({
-  life2015 <- filter(dataAnalytics, Year == input$slider1)
-  plottitle <- paste("Life.expectancy ~ adult mortality in", input$slider1)
+  life2015 <- filter(dataAnalytics, Year == input$slider2)
+  plottitle <- paste("Life.expectancy ~ adult mortality in", input$slider2)
   ggplot(life2015, aes(Adult.Mortality, Life.expectancy)) + 
     geom_point(aes(color = Status)) +
     geom_smooth() +
@@ -152,8 +152,8 @@ output$hist3 <- renderPlot({
 })
 
 output$hist4 <- renderPlot({
-  life2015 <- filter(dataAnalytics, Year == input$slider1)
-  plottitle <- paste("Life.expectancy ~ HIV.AIDS in", input$slider1)
+  life2015 <- filter(dataAnalytics, Year == input$slider3)
+  plottitle <- paste("Life.expectancy ~ HIV.AIDS in", input$slider3)
   ggplot(life2015, aes(HIV.AIDS, Life.expectancy)) + 
     geom_point(aes(color = Status)) +
     geom_smooth() +
@@ -162,8 +162,8 @@ output$hist4 <- renderPlot({
 })
 
 output$hist5 <- renderPlot({
-  life2015 <- filter(dataAnalytics, Year == input$slider1)
-  plottitle <- paste("Life.expectancy ~ Diphtheria in", input$slider1)
+  life2015 <- filter(dataAnalytics, Year == input$slider3)
+  plottitle <- paste("Life.expectancy ~ Diphtheria in", input$slider3)
   ggplot(life2015, aes(Diphtheria, Life.expectancy)) + 
     geom_point(aes(color = Status)) +
     geom_smooth() +
@@ -172,8 +172,8 @@ output$hist5 <- renderPlot({
 })
 
 output$hist6 <- renderPlot({
-  life2015 <- filter(dataAnalytics, Year == input$slider1)
-  plottitle <- paste("Life.expectancy ~ Measles in", input$slider1)
+  life2015 <- filter(dataAnalytics, Year == input$slider3)
+  plottitle <- paste("Life.expectancy ~ Measles in", input$slider3)
   ggplot(life2015, aes(Measles, Life.expectancy)) + 
     geom_point(aes(color = Status)) +
     geom_smooth() +
@@ -182,8 +182,8 @@ output$hist6 <- renderPlot({
 })
 
 output$hist7 <- renderPlot({
-  life2015 <- filter(dataAnalytics, Year == input$slider1)
-  plottitle <- paste("Life.expectancy ~ Hepatitis.B in", input$slider1)
+  life2015 <- filter(dataAnalytics, Year == input$slider3)
+  plottitle <- paste("Life.expectancy ~ Hepatitis.B in", input$slider3)
   ggplot(life2015, aes(Hepatitis.B, Life.expectancy)) + 
     geom_point(aes(color = Status)) +
     geom_smooth() +

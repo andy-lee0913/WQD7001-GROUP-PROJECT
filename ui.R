@@ -13,6 +13,7 @@ library(ggthemes)
 library(plotly)
 library(hrbrthemes)
 
+
 analyticsData<-read.csv("LifeExpectancyData.csv")
 
 
@@ -33,7 +34,19 @@ ylim <- list(
 
 # Define UI for application that draws a histogram
 navbarPage("Life expectancy", id="nav",
+           #############################
+           # liuhongyang Documentation#
+           #############################
            
+           tabPanel("Overview",fluidRow(
+            
+                    includeMarkdown("documentation.md")
+             
+           )),
+           
+            #############################
+            # liuhongyang Interactive Map#
+           #############################
            tabPanel("Interactive Map",
                     
                     div(class="outer",
@@ -68,19 +81,29 @@ navbarPage("Life expectancy", id="nav",
                     ), 
            
            #############################
-           # tab Life.expectancy ~ GDP #
+           # tab GDP disease mortality #
            #############################
-           tabPanel(textOutput('plottitle'),
+           tabPanel("Lifespan ~ GDP",
                     sliderInput('slider1','choose the year you want to check',
-                                2000, 2015, 2003),
-                    plotOutput("hist1"),
-                    plotOutput("hist2"),
-                    plotOutput("hist3"),
-                    plotOutput("hist4"),
-                    plotOutput("hist5"),
-                    plotOutput("hist6"),
-                    plotOutput("hist7")
-                    ),
+                                           2000, 2015, 2003),
+                        plotOutput("hist1")
+                      ),
+
+          tabPanel("Lifespan ~ mortality",
+                   sliderInput('slider2','choose the year you want to check',
+                               2000, 2015, 2003),
+                   plotOutput("hist2"),
+                   plotOutput("hist3")
+                   ),
+          
+          tabPanel("Lifespan ~ diseases",
+                   sliderInput('slider3','choose the year you want to check',
+                               2000, 2015, 2003),
+                   plotOutput("hist4"),
+                   plotOutput("hist5"),
+                   plotOutput("hist6"),
+                   plotOutput("hist7")
+                   ),
            ###########################
            
             # tab 'DataSearch'
@@ -179,5 +202,7 @@ navbarPage("Life expectancy", id="nav",
                         position = c("left", "right")
                         )
            )
+           
+         
           
 )
