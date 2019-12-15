@@ -67,9 +67,16 @@ navbarPage("Life expectancy", id="nav",
            # tab Life.expectancy ~ GDP #
            #############################
            tabPanel(textOutput('plottitle'),
-                    plotOutput("hist1"),
                     sliderInput('slider1','choose the year you want to check',
-                                2000, 2015, 2003)),
+                                2000, 2015, 2003),
+                    plotOutput("hist1"),
+                    plotOutput("hist2"),
+                    plotOutput("hist3"),
+                    plotOutput("hist4"),
+                    plotOutput("hist5"),
+                    plotOutput("hist6"),
+                    plotOutput("hist7")
+                    ),
            ###########################
            
             # tab 'DataSearch'
