@@ -169,12 +169,15 @@ navbarPage("Life expectancy", id="nav",
            # tab Life.expectancy ~ Year #
            #############################
            tabPanel(  title = "Life expectancy changes with time",
-                      selectInput("typeOfCountry", h4("Select countries"), choices = levels(analyticsData$Country),selected=levels(analyticsData$Country)[35]),
+                      
                       sidebarLayout(
-                        sidebarPanel(),
+                        sidebarPanel(
+                        selectInput("typeOfCountry", h4("Select countries"), choices = levels(analyticsData$Country),selected=levels(analyticsData$Country)[35]),
+                        ),
                         mainPanel(
-                          plotlyOutput("plot1"),
-                        ))
+                        plotlyOutput("plot1"),),
+                        position = c("left", "right")
+                        )
            )
           
 )
