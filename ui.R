@@ -1,6 +1,6 @@
 library(jsonlite)
 library(geojsonio)
-library(dplyr) 
+library(dplyr)
 library(leaflet)
 library(shiny)
 library(RColorBrewer)
