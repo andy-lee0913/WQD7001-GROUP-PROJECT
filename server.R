@@ -116,7 +116,7 @@ output$data <- renderTable({
 # tab GDP #
 #############################
 output$plottitle <- renderPrint({
-  cat("Life.expectancy ~ GDP,mortality and diseases in ",input$slider1)
+  cat("Lifespan ~ GDP,mortality,diseases in ",input$slider1)
 })
 
 output$hist1 <- renderPlot({
