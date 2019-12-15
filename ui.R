@@ -1,6 +1,6 @@
 library(jsonlite)
 library(geojsonio)
-library(dplyr)
+library(dplyr) 
 library(leaflet)
 library(shiny)
 library(RColorBrewer)
@@ -34,7 +34,19 @@ ylim <- list(
 
 # Define UI for application that draws a histogram
 navbarPage("Life expectancy", id="nav",
+           #############################
+           # liuhongyang Documentation#
+           #############################
            
+           tabPanel("Overview",fluidRow(
+            
+                    includeMarkdown("documentation.md")
+             
+           )),
+           
+            #############################
+            # liuhongyang Interactive Map#
+           #############################
            tabPanel("Interactive Map",
                     
                     div(class="outer",
@@ -189,16 +201,8 @@ navbarPage("Life expectancy", id="nav",
                         plotlyOutput("plot1"),),
                         position = c("left", "right")
                         )
-           ),
+           )
            
-           #############################
-           # liuhongyang Documentation#
-           #############################
-           
-           tabPanel("Overview",fluidRow(
-            
-                    includeMarkdown("documentation.md")
-             
-           ))
+         
           
 )
