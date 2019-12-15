@@ -9,6 +9,8 @@ library(ggplot2)
 library(ggthemes)
 library(ggrepel)
 library(DT)
+library(plotly)
+library(hrbrthemes)
 #analyticsData<-read.csv("LifeExpectancyData.csv")
 
 # Define server logic required to draw a histogram
